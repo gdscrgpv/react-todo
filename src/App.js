@@ -11,6 +11,7 @@ export default function App() {
     <div>
       <h1>Todo List</h1>
       <TodoList todos={todos} />
+      <AddTodo />
     </div>
   );
 }
@@ -23,5 +24,17 @@ function TodoList(props) {
         <li key={todo.id}>{todo.text}</li>
       ))}
     </div>
+  );
+}
+
+function AddTodo() {
+  function handleAddTodo(props) {
+    console.log(props);
+  }
+  return (
+    <form onSubmit={handleAddTodo}>
+      <input placeholder="Add todo" />
+      <button type="submit">Submit</button>
+    </form>
   );
 }
