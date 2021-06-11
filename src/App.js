@@ -28,12 +28,19 @@ function TodoList(props) {
 }
 
 function AddTodo() {
-  function handleAddTodo(props) {
-    console.log(props);
+  function handleAddTodo(event) {
+    // To prevent form default behaviour i.e page refresh on submit form
+    event.preventDefault();
+
+    // elements has form fields
+    console.log(event.target.elements);
+
+    // this contains the actual value by using the name given to the field
+    console.log(event.target.elements.addTodo.value);
   }
   return (
     <form onSubmit={handleAddTodo}>
-      <input placeholder="Add todo" />
+      <input name="addTodo" placeholder="Add todo" />
       <button type="submit">Submit</button>
     </form>
   );
