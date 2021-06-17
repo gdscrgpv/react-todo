@@ -10,7 +10,7 @@ export default function App() {
   return (
     <div>
       <h1>Todo List</h1>
-      <TodoList todos={todos} />
+      <TodoList todos={todos} setTodos={setTodos} />
       <AddTodo setTodos={setTodos} length={todos.length} />
     </div>
   );
@@ -19,10 +19,31 @@ export default function App() {
 function TodoList(props) {
   console.log(props);
   var todos = props.todos;
+
+  function handleToggleTodo(todo) {
+    // console.log(todo);
+    const updatedTodos = todos.map((t) =>
+      t.id === todo.id
+        ? {
+            ...t,
+            done: !t.done
+          }
+        : t
+    );
+    props.setTodos(updatedTodos);
+  }
   return (
     <div>
       {todos.map((todo) => (
-        <li key={todo.id}>{todo.text}</li>
+        <li
+          style={{
+            textDecoration: todo.done ? "line-through" : ""
+          }}
+          key={todo.id}
+          onDoubleClick={() => handleToggleTodo(todo)}
+        >
+          {todo.text}
+        </li>
       ))}
     </div>
   );
