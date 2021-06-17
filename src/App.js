@@ -62,7 +62,7 @@ function AddTodo({ setTodos, length }) {
     console.log(event.target.elements.addTodo.value);
     const text = event.target.elements.addTodo.value;
     const todo = {
-      id: ++length,
+      id: Math.random(),
       text,
       done: false
     };
