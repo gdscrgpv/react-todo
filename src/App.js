@@ -32,7 +32,9 @@ function TodoList(props) {
     );
     props.setTodos(updatedTodos);
   }
-
+  if (!todos.length) {
+    return <p>No todos left!</p>;
+  }
   return (
     <div>
       {todos.map((todo) => (
@@ -44,6 +46,7 @@ function TodoList(props) {
           onDoubleClick={() => handleToggleTodo(todo)}
         >
           {todo.text}
+          <DeleteTodo todo={todo} setTodos={props.setTodos} />
         </li>
       ))}
     </div>
@@ -72,10 +75,39 @@ function AddTodo({ setTodos, length }) {
     });
     inputRef.current.value = "";
   }
+
   return (
     <form onSubmit={handleAddTodo}>
       <input name="addTodo" placeholder="Add todo" ref={inputRef} />
       <button type="submit">Submit</button>
     </form>
+  );
+}
+
+function DeleteTodo({ todo, setTodos }) {
+  function handleDeleteTodo() {
+    // returns true of false
+    const confirmed = window.confirm("Do you want to delete this?");
+    if (confirmed) {
+      // take care of deleting the todo
+      setTodos((prevTodos) => {
+        return prevTodos.filter((t) => t.id !== todo.id);
+      });
+    }
+  }
+
+  return (
+    <span
+      onClick={handleDeleteTodo}
+      role="button"
+      style={{
+        color: "red",
+        fontWeight: "bold",
+        marginLeft: 10,
+        cursor: "pointer"
+      }}
+    >
+      x
+    </span>
   );
 }
