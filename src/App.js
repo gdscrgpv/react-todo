@@ -32,6 +32,7 @@ function TodoList(props) {
     );
     props.setTodos(updatedTodos);
   }
+
   return (
     <div>
       {todos.map((todo) => (
@@ -56,7 +57,7 @@ function AddTodo({ setTodos, length }) {
     event.preventDefault();
 
     // elements has form fields
-    console.log(event.target.elements);
+    // console.log(event.target.elements);
 
     // this contains the actual value by using the name given to the field
     console.log(event.target.elements.addTodo.value);
