@@ -1,11 +1,26 @@
 import "./styles.css";
-import React from "react";
+import React, { useEffect } from "react";
 export default function App() {
-  const [todos, setTodos] = React.useState([
-    { id: 1, text: "Wash dishes", done: false },
-    { id: 2, text: "Do laundry", done: false },
-    { id: 3, text: "Take shower", done: false }
-  ]);
+
+  const [todos, setTodos] = React.useState([]);
+
+  //to get the data already stored in local storage
+  const getLocalStorage = () => {
+    const localData = localStorage.getItem('todos');
+    //check if there is data on local storage if not return empty
+    return localData ? JSON.parse(localData) : []
+  }
+  
+  //update the state on the first render
+  useEffect(() => {
+    setTodos(getLocalStorage())
+  },[])
+   
+  // add data to local storage when todos changes
+  useEffect(() => {
+    localStorage.setItem('todos', JSON.stringify(todos))
+  },[todos])
+
 
   return (
     <div>
