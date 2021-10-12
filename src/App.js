@@ -1,11 +1,29 @@
+import React, { useEffect } from "react";
+import AddTodo from "./components/AddTodo";
+import TodoList from "./components/TodoList";
 import "./styles.css";
-import React from "react";
+
 export default function App() {
-  const [todos, setTodos] = React.useState([
-    { id: 1, text: "Wash dishes", done: false },
-    { id: 2, text: "Do laundry", done: false },
-    { id: 3, text: "Take shower", done: false }
-  ]);
+
+  const [todos, setTodos] = React.useState([]);
+
+  //to get the data already stored in local storage
+  const getLocalStorage = () => {
+    const localData = localStorage.getItem('todos');
+    //check if there is data on local storage if not return empty
+    return localData ? JSON.parse(localData) : []
+  }
+  
+  //update the state on the first render
+  useEffect(() => {
+    setTodos(getLocalStorage())
+  },[])
+   
+  // add data to local storage when todos changes
+  useEffect(() => {
+    localStorage.setItem('todos', JSON.stringify(todos))
+  },[todos])
+
 
   return (
     <div className="container">
@@ -15,6 +33,7 @@ export default function App() {
     </div>
   );
 }
+
 
 function TodoList(props) {
   console.log(props);
@@ -42,6 +61,7 @@ function TodoList(props) {
           style={{
             color: "white",
             textAlign: "center",
+            fontSize: "80px",
             textDecoration: todo.done ? "line-through" : ""
           }}
           key={todo.id}
@@ -116,3 +136,4 @@ function DeleteTodo({ todo, setTodos }) {
     </span>
   );
 }
+
