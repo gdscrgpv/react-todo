@@ -17,16 +17,18 @@ h1 {
 }
 
 h1 {
-  font-size: 5.2rem;
+  font-size: 150px;
   animation: pulsate 0.11s ease-in-out infinite alternate;
 }
 p {
   color: yellow;
   text-align: center;
+  font-size: 100px;
 }
 input {
   text-align: center;
-  height: 30px;
+  height: 70px;
+  width: 250px;
   border: #fff;
   border-radius: 40px;
   background-color: lightblue;
@@ -35,12 +37,21 @@ input {
 }
 button {
   text-align: center;
-  height: 30px;
-  width: 70px;
+  height: 50px;
+  width: 170px;
   border: #fff;
   border-radius: 20px;
   background-color: lightblue;
   font-weight: bold;
   margin-top: 10px;
+  color: green;
+  font-size: 20px;
 }
-
+button:hover {
+  color: purple;
+}
+::placeholder {
+  color: green;
+  font-size: 25px;
+  font-weight: bold;
+}
