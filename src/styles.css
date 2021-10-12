@@ -1,4 +1,46 @@
-.App {
-  font-family: sans-serif;
+.neonText {
+  color: #fff;
+  text-shadow: 0 0 7px #fff, 0 0 10px #fff, 0 0 21px #fff, 0 0 42px #5271ff,
+    0 0 82px #5271ff, 0 0 92px #5271ff, 0 0 102px #5271ff, 0 0 151px #5271ff;
+}
+
+body {
+  font-size: 18px;
+  font-family: cursive;
+  background-color: #010a01;
+  background-image: url("https://cdn.pixabay.com/photo/2017/02/12/12/42/wall-2059909_640.png");
+}
+
+h1 {
+  text-align: center;
+  font-weight: 400;
+}
+
+h1 {
+  font-size: 5.2rem;
+  animation: pulsate 0.11s ease-in-out infinite alternate;
+}
+p {
+  color: yellow;
   text-align: center;
 }
+input {
+  text-align: center;
+  height: 30px;
+  border: #fff;
+  border-radius: 40px;
+  background-color: lightblue;
+  font-weight: bold;
+  margin-top: 20px;
+}
+button {
+  text-align: center;
+  height: 30px;
+  width: 70px;
+  border: #fff;
+  border-radius: 20px;
+  background-color: lightblue;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
