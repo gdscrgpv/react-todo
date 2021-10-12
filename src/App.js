@@ -8,8 +8,8 @@ export default function App() {
   ]);
 
   return (
-    <div>
-      <h1>Todo List</h1>
+    <div className="container">
+      <h1 className="neonText">Todo List</h1>
       <TodoList todos={todos} setTodos={setTodos} />
       <AddTodo setTodos={setTodos} length={todos.length} />
     </div>
@@ -40,6 +40,8 @@ function TodoList(props) {
       {todos.map((todo) => (
         <li
           style={{
+            color: "white",
+            textAlign: "center",
             textDecoration: todo.done ? "line-through" : ""
           }}
           key={todo.id}
@@ -77,10 +79,13 @@ function AddTodo({ setTodos, length }) {
   }
 
   return (
-    <form onSubmit={handleAddTodo}>
-      <input name="addTodo" placeholder="Add todo" ref={inputRef} />
-      <button type="submit">Submit</button>
-    </form>
+    <center>
+      <form onSubmit={handleAddTodo}>
+        <input name="addTodo" placeholder="Add todo" ref={inputRef} />
+        <br />
+        <button type="submit">Submit</button>
+      </form>
+    </center>
   );
 }
 
