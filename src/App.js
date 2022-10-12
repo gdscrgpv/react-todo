@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 import AddTodo from "./components/AddTodo";
 import TodoList from "./components/TodoList";
 import "./styles.css";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import ErrorPage from "./components/ErrorPage";
 
 export default function App() {
 
@@ -26,10 +28,13 @@ export default function App() {
 
 
   return (
-    <div>
+    <Routes>
+      <Route path="/" element={<div>
       <h1>Todo List</h1>
       <TodoList todos={todos} setTodos={setTodos} />
       <AddTodo setTodos={setTodos} length={todos.length} />
-    </div>
+    </div>} />
+    <Route path="/404" element={<ErrorPage/>} />
+    </Routes>
   );
 }
